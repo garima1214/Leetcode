@@ -1,0 +1,57 @@
+#include<iostream>
+using namespace std;
+
+int maxsize( int a[] ,int n , int k)
+{
+	int ans =0, count =0, flag=0;
+	for(int i=0;i<n;i++)
+	{
+		if(a[i]<k)
+		{
+			count++;
+		}
+		else if( a[i]==k)
+		{
+			if(flag==0)
+			{  count++;
+				flag=1;
+				
+			}
+			else
+		
+			{
+				ans = ans + count ;
+				count=1;
+			}
+		}
+		else
+		{
+			if(flag==1)
+			{
+				ans = ans + count ;
+				
+			}
+			count =0;
+			flag=0;
+		}
+	}
+		if(flag==1)
+		{
+			ans =ans +count ;
+		}
+	return ans ;
+}
+
+int main()
+{
+	int n,k;
+	cin>>n>>k;
+	int a[n];
+	for(int i=0;i<n;i++)
+	{
+		cin>>a[i];
+	}
+	
+	int ans = maxsize(a,n,k);
+	cout<<ans ;
+}
